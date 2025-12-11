@@ -1,82 +1,97 @@
-import { motion } from "framer-motion";
-import codeImg from "../assets/code.jpg";
-import aiImg from "../assets/ai.jpeg";
-import bookImg from "../assets/bookstore.jpeg";
-import laptopImg from "../assets/laptop.jpg";
+import React from "react";
+import codeImg from "../assets/code.jpg";            // CopyMate
+import aiImg from "../assets/ai.jpeg";               // FounderTherapy
+import bookImg from "../assets/bookstore.jpeg";      // Book Store
+import laptopImg from "../assets/laptop.jpg";        // Your Trip & Weather
 
 const projects = [
-  {
-    id: 1,
-    title: "Budget-App",
-    description: "A personal finance tracker with monthly & yearly visualizations.",
-    image: codeImg,
-    liveUrl: "https://founder-therapy-whqi.vercel.app",
-    githubUrl: "https://github.com/sanjay130604/Budget-App",
+  { 
+    id: 1, 
+    title: "CopyMate — AI Content Generator", 
+    tag: "Full Stack / AI / MERN", 
+    img: codeImg,
+    live: "https://copymate-frontend.onrender.com",
+    github: "https://github.com/One-to-Infinity-Team/CopyMate-Frontend"
   },
-  {
-    id: 2,
-    title: "FounderTherapy",
-    description: "AI-powered journaling & emotional analysis.",
-    image: aiImg,
-    liveUrl: "https://founder-therapy-whqi.vercel.app",
-    githubUrl: "https://github.com/sanjay130604/backend_founderTherary",
+  { 
+    id: 2, 
+    title: "FounderTherapy — AI Mood Tracker", 
+    tag: "Full Stack / MERN / AI", 
+    img: aiImg,
+    live: "https://founder-therapy-whqi.vercel.app/",
+    github: "https://github.com/sanjay130604/FounderTherapy__"
   },
-  {
-    id: 3,
-    title: "Book-store",
-    description: "Browse, search & buy books with smooth checkout.",
-    image: bookImg,
-    liveUrl: "https://sanjay130604.github.io/book-store/",
-    githubUrl: "https://github.com/sanjay130604/book-store",
+  { 
+    id: 3, 
+    title: "Book Store — MERN E-Commerce", 
+    tag: "Full Stack / MERN", 
+    img: bookImg,
+    live: "https://sanjay130604.github.io/book-store/",
+    github: "https://github.com/sanjay130604/book-store"
   },
-  {
-    id: 4,
-    title: "Explore the World",
-    description: "A travel discovery website for global destinations.",
-    image: laptopImg,
-    liveUrl: "https://sanjay130604.github.io/explorethwworld/",
-    githubUrl: "https://github.com/sanjay130604/explorethwworld",
+  { 
+    id: 4, 
+    title: "Your Trip — Travel Planner", 
+    tag: "Frontend + API Integration", 
+    img: laptopImg,
+    live: "https://sanjay130604.github.io/explorethwworld/",
+    github: "https://sanjay130604.github.io/explorethwworld/"
+  },
+  { 
+    id: 5, 
+    title: "Weather App — OpenWeather API", 
+    tag: "React.js / API", 
+    img: laptopImg,
+    live: "https://your-weather-app-live-url.com",
+    github: "https://github.com/sanjay130604/Budget-App"
   },
 ];
 
 export default function ProjectsSection() {
   return (
-    <section className="py-20">
-      <h2 className="text-4xl font-bold mb-12 text-center">Featured Projects</h2>
+    <section id="portfolio" className="py-20">
+      <h2 className="text-4xl font-bold text-center mb-8">Portfolio</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        {projects.map((project) => (
-          <motion.div
-            key={project.id}
-            whileHover={{ scale: 1.03 }}
-            className="relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-xl shadow-xl"
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-6">
+        {projects.map((p) => (
+          <article 
+            key={p.id} 
+            className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-xl transition"
           >
-            <img src={project.image} className="h-64 w-full object-cover opacity-90" />
+            <img src={p.img} alt={p.title} className="w-full h-56 object-cover" />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+            <div className="p-6">
+              <div className="text-sm text-purple-600 mb-2">{p.tag}</div>
 
-            <div className="absolute bottom-5 left-5 right-5">
-              <h3 className="text-xl font-semibold">{project.title}</h3>
-              <p className="text-gray-300 text-sm mb-4">{project.description}</p>
+              <h3 className="text-xl font-semibold mb-3">{p.title}</h3>
 
-              <div className="flex gap-4">
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  className="px-4 py-2 bg-white/10 rounded-full hover:bg-white/20 transition"
+              <p className="text-gray-600 mb-6">
+                A modern full-stack application built with clean architecture,  
+                scalable backend, and elegant UI components.
+              </p>
+
+              {/* BUTTONS */}
+              <div className="flex items-center gap-3">
+                <a 
+                  href={p.live} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-md bg-purple-600 text-white hover:bg-purple-700 transition text-sm"
                 >
-                  View Project
+                  Website →
                 </a>
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  className="px-4 py-2 bg-white/10 rounded-full hover:bg-white/20 transition"
+
+                <a 
+                  href={p.github} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-50 transition text-sm"
                 >
-                  GitHub
+                  GitHub →
                 </a>
               </div>
             </div>
-          </motion.div>
+          </article>
         ))}
       </div>
     </section>

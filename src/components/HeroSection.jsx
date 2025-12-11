@@ -1,68 +1,123 @@
+import React from "react";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import photo from "../assets/photo.jpg";
 
 export default function HeroSection() {
-  const [hover, setHover] = useState(false);
-
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center relative px-6 overflow-hidden">
+    <section className="min-h-[82vh] flex items-center">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] opacity-90"></div>
-
-      {/* Glow effect */}
-      <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/30 rounded-full blur-[150px]"></div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 max-w-3xl"
-      >
-        {/* Name */}
-        <motion.h1
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          className={`text-5xl md:text-7xl font-extrabold mb-6 transition-all ${
-            hover
-              ? "text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-300 to-white"
-              : "text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400"
-          }`}
+        {/* LEFT TEXT SECTION */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          Sanjay S
-        </motion.h1>
+          <motion.h1
+            className="h-giant text-black/95 leading-tight"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+          >
+            Hello, I’m <br /> Sanjay S
+          </motion.h1>
 
-        {/* Title */}
-        <p className="text-2xl text-gray-200 mb-4">Full Stack Developer</p>
+          <motion.p
+            className="mt-6 text-gray-600 max-w-2xl text-lg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            I’m a <span className="font-semibold text-purple-600">Full-Stack Developer</span> 
+            specializing in the <span className="font-semibold text-purple-600">MERN Stack</span>.
+            I build clean, scalable, high-performance applications across  
+            <span className="underline decoration-purple-300"> Frontend</span> and  
+            <span className="underline decoration-purple-300"> Backend</span>.
+          </motion.p>
 
-        {/* Summary */}
-        <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed mb-6">
-          I build seamless, scalable, and stunning web applications using the MERN stack.
-          Turning creative ideas into smooth user experiences is my passion.
-        </p>
-
-        {/* Skills badges */}
-        <div className="flex flex-wrap justify-center gap-3 mt-4">
-          {[
-            "React.js",
-            "Node.js",
-            "Express.js",
-            "MongoDB",
-            "Tailwind CSS",
-            "Bootstrap",
-            "Framer Motion",
-          ].map((tech, i) => (
-            <motion.span
-              key={tech}
-              className="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-sm backdrop-blur-md shadow"
-              whileHover={{ scale: 1.2 }}
-              animate={{ y: [0, -8, 0], transition: { repeat: Infinity, duration: 2, delay: i * 0.2 } }}
+          {/* BUTTON + STATS */}
+          <motion.div
+            className="mt-8 flex gap-4 items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            {/* BUTTON */}
+            <motion.button
+              whileHover={{ scale: 1.07 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 250 }}
+              className="px-6 py-3 bg-gradient-to-tr from-purple-600 to-purple-400 text-white rounded-xl shadow-md"
             >
-              {tech}
-            </motion.span>
-          ))}
-        </div>
-      </motion.div>
+              Say Hello
+            </motion.button>
+
+            {/* STATS */}
+            <div className="flex items-center gap-4">
+
+              {/* EXPERIENCE */}
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.6 }}
+                className="bg-purple-50 rounded-xl px-5 py-4 text-center shadow"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="text-2xl font-bold">02 Y.</div>
+                <div className="text-sm text-gray-500">Technical Experience</div>
+              </motion.div>
+
+              {/* PROJECTS */}
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.7 }}
+                className="bg-purple-50 rounded-xl px-5 py-4 text-center shadow"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="text-2xl font-bold">10 +</div>
+                <div className="text-sm text-gray-500">Projects</div>
+              </motion.div>
+
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* RIGHT IMAGE CARD WITH ANIMATION */}
+        <motion.div
+          className="flex justify-center lg:justify-end"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9 }}
+        >
+          <motion.div
+            className="w-[520px] bg-white rounded-2xl shadow-card p-8 border border-gray-50"
+            whileHover={{ scale: 1.03 }}
+            animate={{
+              y: [0, -12, 0], // floating animation
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+            }}
+          >
+            <motion.div
+              className="rounded-2xl overflow-hidden"
+              whileHover={{ scale: 1.06 }}
+              transition={{ duration: 0.4 }}
+            >
+              <img
+                src={photo}
+                alt="Sanjay"
+                className="w-full h-[520px] object-cover rounded-2xl"
+              />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+      </div>
     </section>
   );
 }
